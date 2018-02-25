@@ -11,52 +11,52 @@ DB_ADMIN_PASSWD=root@mysql
 DB_HOST=localhost
 
 #User management DB info
-UM_DB=usermgt_dbt1
-UM_USER=usermgt_usert1
+UM_DB=usermgt_db
+UM_USER=usermgt_user
 UM_USER_NET='%'
-UM_PASSWD=rootmysql
+UM_PASSWD=passwdmysql
 UM_SCHEMA=usermgt_mysql5.7.sql
 
 #Registry DB info
-REG_DB=reg_dbt1
-REG_USER=reg_usert1
+REG_DB=reg_db
+REG_USER=reg_user
 REG_USER_NET='%'
-REG_PASSWD=rootmysql
+REG_PASSWD=passwdmysql
 REG_SCHEMA=registry_mysql5.7.sql
 
 #AM DB info
-AM_DB=am_dbt1
-AM_USER=am_usert1
+AM_DB=am_db
+AM_USER=am_user
 AM_USER_NET='%'
-AM_PASSWD=rootmysql
+AM_PASSWD=passwdmysql
 AM_SCHEMA=apim_mysql5.7.sql
 
 #note that you do not need to run the database scripts against the created databases as the tables for the datasources
 # are created at runtime.
 
 #WSO2AM_STATS_DB
-AMS_DB=ams_dbt1
-AMS_USER=ams_usert1
+AMS_DB=ams_db
+AMS_USER=ams_user
 AMS_USER_NET='%'
-AMS_PASSWD=rootmysql
+AMS_PASSWD=passwdmysql
 
 #WSO2_ANALYTICS_EVENT_STORE_DB
-AAE_DB=ame_dbt1
-AAE_USER=aae_usert1
+AAE_DB=ame_db
+AAE_USER=aae_user
 AAE_USER_NET='%'
-AAE_PASSWD=rootmysql
+AAE_PASSWD=passwdmysql
 
 #WSO2_ANALYTICS_PROCESSED_DATA_STORE_DB
-AAP_DB=amp_dbt1
-AAP_USER=aap_usert1
+AAP_DB=amp_db
+AAP_USER=aap_user
 AAP_USER_NET='%'
-AAP_PASSWD=rootmysql
+AAP_PASSWD=passwdmysql
 
 #GEO_LOCATION_DATA
-AAG_DB=amg_dbt1
-AAG_USER=aag_usert1
+AAG_DB=amg_db
+AAG_USER=aag_user
 AAG_USER_NET='%'
-AAG_PASSWD=rootmysql
+AAG_PASSWD=passwdmysql
 
 #create db
 #create_database <DB_ADMIN_USER> <DB_ADMIN_PASSWD> <DB_HOST> <DB_NAME>
@@ -85,6 +85,7 @@ create_schema(){
 }
 
 #create db user
+#create_user <DB_ADMIN_USER> <DB_ADMIN_PASSWD> <DB_HOST> <DB_USER_NAME> <DB_USER_HOST> <DB_USER_PASSWD>
 create_user(){
     `mysql -u$1 -p$2 -h$3 -e "CREATE USER '$4'@'%'"`
     if (($? == 0)); then
@@ -104,6 +105,7 @@ fi
 }
 
 #grant permission
+#grant_permission <DB_ADMIN_USER> <DB_ADMIN_PASSWD> <DB_HOST> <DB_USER_NAME> <DB_USER_HOST> <DB_NAME>
 grant_permission(){
 
     `mysql -u$1 -p$2 -h$3 -e "GRANT ALL ON $6.* TO '$4'@'$5'"`
