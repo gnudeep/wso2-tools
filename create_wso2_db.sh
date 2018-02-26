@@ -15,21 +15,21 @@ UM_DB=usermgt_db
 UM_USER=usermgt_user
 UM_USER_NET='%'
 UM_PASSWD=passwdmysql
-UM_SCHEMA=usermgt_mysql5.7.sql
+UM_SCHEMA=usermgt_mysql_5.1.73.sql
 
 #Registry DB info
 REG_DB=reg_db
 REG_USER=reg_user
 REG_USER_NET='%'
 REG_PASSWD=passwdmysql
-REG_SCHEMA=registry_mysql5.7.sql
+REG_SCHEMA=registry_mysql_5.1.73.sql
 
 #AM DB info
 AM_DB=am_db
 AM_USER=am_user
 AM_USER_NET='%'
 AM_PASSWD=passwdmysql
-AM_SCHEMA=apim_mysql5.7.sql
+AM_SCHEMA=apim_mysql_5.1.73.sql
 
 #note that you do not need to run the database scripts against the created databases as the tables for the datasources
 # are created at runtime.
